@@ -61,49 +61,47 @@ int main(void)
         {
             case 1:
             	// bandera para que solo se pueda ingresar una vez los kilometros mientras que sea un numero valido.
-				if(flagKm == 0)
-				{
-					//pedir los kilometros
-					km=PedirFlotante("\nIngrese Kilometros: ");
-					while(km < 1)
-					{
-						//mensaje error + volver a pedir kilometros
-						km=PedirFlotante("\nError. Ingrese Kilometros: ");
-					}
-					flagKm=1;
-				}else{
-					//msj error al volver a querer cargar los Kilometros ya cargados
-					printf("\nError. Ya se ingresaron los Kilometros. \n");
-
-				}
+		if(flagKm == 0)
+		{
+			//pedir los kilometros
+			km=PedirFlotante("\nIngrese Kilometros: ");
+			while(km < 1)
+			{
+				//mensaje error + volver a pedir kilometros
+				km=PedirFlotante("\nError. Ingrese Kilometros: ");
+			}
+			flagKm=1;
+		}else{
+			//msj error al volver a querer cargar los Kilometros ya cargados
+			printf("\nError. Ya se ingresaron los Kilometros. \n");
+		}
 
             break;
 
             case 2:
             	//bandera para que los precios solo se puedan ingresar una vez mientras que los precio sean validos
-				if(flagPrecio ==0)
-				{
-					//pedir precio aerolineas
-					precioAerolineas=PedirFlotante("-Precio vuelo Aerolineas: ");
-					while(precioAerolineas <1)
-					{
-						// mensaje de error + volver a pedir precio aerolineas valido
-						precioAerolineas=PedirFlotante("\nError. Ingrese Precio vuelo Aerolineas: \n");
-					}
-					//pedir precio latam
-					precioLatam = PedirFlotante("-Precio vuelo Latam: ");
-					while(precioLatam <1)
-					{
-						// mensaje de error + volver a pedir precio Latam valido
-						precioLatam = PedirFlotante("\nError. Ingrese Precio vuelo Latam: \n\n");
-					}
-					flagPrecio=1;
-				}else
-				{
-				//msj de error al querer volver a ingresar los precios ya cargados
-				printf("\nError. Ya se ingresaron los precios de los vuelos.\n");
-				}
-			break;
+		if(flagPrecio ==0)
+		{
+			//pedir precio aerolineas
+			precioAerolineas=PedirFlotante("-Precio vuelo Aerolineas: ");
+			while(precioAerolineas <1)
+			{
+				// mensaje de error + volver a pedir precio aerolineas valido
+				precioAerolineas=PedirFlotante("\nError. Ingrese Precio vuelo Aerolineas: \n");
+			}
+			//pedir precio latam
+			precioLatam = PedirFlotante("-Precio vuelo Latam: ");
+			while(precioLatam <1)
+			{
+				// mensaje de error + volver a pedir precio Latam valido
+				precioLatam = PedirFlotante("\nError. Ingrese Precio vuelo Latam: \n\n");
+			}
+			flagPrecio=1;
+		}else{
+			//msj de error al querer volver a ingresar los precios ya cargados
+			printf("\nError. Ya se ingresaron los precios de los vuelos.\n");
+		}
+		break;
 
             case 3:
                 // mensaje de error en caso que falten cargar datos mayor a 0
@@ -111,32 +109,31 @@ int main(void)
                 //verificar que se hayan ingresado todos los datos positivos
                 if(precioLatam > 0 && precioAerolineas >0 && km > 0)
                 {
-					//calcular precio con debito Aerolineas
-					precioDebitoAerolineas = CalcularMultiplicacion(precioAerolineas, descuento);
-					// calcular precio on debito latam
-					precioDebitoLatam = CalcularMultiplicacion(precioLatam, descuento);
-					//calcular precio con credito Aerolineas
-					precioCreditoAerolineas = CalcularMultiplicacion(precioAerolineas, interes);
-					// calcular precio con credito Latam
-					precioCreditoLatam =CalcularMultiplicacion(precioLatam, interes);
-					// calcular precio btc Aerolineas
-					precioBtcAerolineas = CalcularDivision(precioAerolineas, btc);
-					//calcular precio btc Latam
-					precioBtcLatam = CalcularDivision(precioLatam, btc);
-					//calcular precio unitario Aerolineas
-					precioUnitarioAerolineas = CalcularDivision(precioAerolineas, km);
-					//calcular precio unitario Latam
-					precioUnitariosLatam = CalcularDivision(precioLatam, km);
-					//calcular la diferencia - resta
-					if(precioLatam > precioAerolineas)
-					{
-					   diferenciaPrecio = CalcularResta(precioLatam, precioAerolineas);
-					}else{
-					   diferenciaPrecio = CalcularResta(precioAerolineas, precioLatam);
-					}
-					//msj avisando al usuario que se hicieron todos los calculos
-					printf("\nSe calcularon todos los costos con exito..\n");
-
+			//calcular precio con debito Aerolineas
+			precioDebitoAerolineas = CalcularMultiplicacion(precioAerolineas, descuento);
+			// calcular precio on debito latam
+			precioDebitoLatam = CalcularMultiplicacion(precioLatam, descuento);
+			//calcular precio con credito Aerolineas
+			precioCreditoAerolineas = CalcularMultiplicacion(precioAerolineas, interes);
+			// calcular precio con credito Latam
+			precioCreditoLatam =CalcularMultiplicacion(precioLatam, interes);
+			// calcular precio btc Aerolineas
+			precioBtcAerolineas = CalcularDivision(precioAerolineas, btc);
+			//calcular precio btc Latam
+			precioBtcLatam = CalcularDivision(precioLatam, btc);
+			//calcular precio unitario Aerolineas
+			precioUnitarioAerolineas = CalcularDivision(precioAerolineas, km);
+			//calcular precio unitario Latam
+			precioUnitariosLatam = CalcularDivision(precioLatam, km);
+			//calcular la diferencia - resta
+			if(precioLatam > precioAerolineas)
+			{
+				diferenciaPrecio = CalcularResta(precioLatam, precioAerolineas);
+			}else{
+				diferenciaPrecio = CalcularResta(precioAerolineas, precioLatam);
+			}
+			//msj avisando al usuario que se hicieron todos los calculos
+			printf("\nSe calcularon todos los costos con exito..\n");
                 }
 
             break;
@@ -149,14 +146,14 @@ int main(void)
                 {
                     //Informar los resultados
                     printf("\nLatam: \n");
-                    printf("a)Precio con tarjeta de débito: $ %.2f\n", precioDebitoLatam);
-                    printf("b)Precio con tarjeta de crédito: $ %.2f\n", precioCreditoLatam);
+                    printf("a)Precio con tarjeta de dÃ©bito: $ %.2f\n", precioDebitoLatam);
+                    printf("b)Precio con tarjeta de crÃ©dito: $ %.2f\n", precioCreditoLatam);
                     printf("c)Precio pagando con bitcoin: $ %.8f\n", precioBtcLatam);
                     printf("d)Precio unitario: $ %.2f \n\n", precioUnitariosLatam);
 
                     printf("Aerolineas: \n");
-                    printf("a)Precio con tarjeta de débito: $ %.2f\n", precioDebitoAerolineas);
-                    printf("b)Precio con tarjeta de crédito: $ %.2f\n", precioCreditoAerolineas);
+                    printf("a)Precio con tarjeta de dÃ©bito: $ %.2f\n", precioDebitoAerolineas);
+                    printf("b)Precio con tarjeta de crÃ©dito: $ %.2f\n", precioCreditoAerolineas);
                     printf("c)Precio pagando con bitcoin: $ %.8f\n", precioBtcAerolineas);
                     printf("d)Precio unitario: $ %.2f \n\n", precioUnitarioAerolineas);
 
